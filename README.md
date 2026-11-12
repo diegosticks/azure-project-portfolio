@@ -1,6 +1,6 @@
 # Azure Project Portfolio — Chijioke Mekowulu
 
-Hands-on Microsoft Azure projects completed by Chijioke Mekowulu, an IT professional based in Calgary, Alberta, with 10+ years of experience across system analysis, IT support, and infrastructure. Each project comes from the Microsoft Learn "Introduction to Cloud Infrastructure" guided-project series and was completed alongside AZ-900 (Azure Fundamentals) study. Every project folder contains a write-up of what was built, how it was validated, and step-by-step screenshots of the work. All lab resources were deleted after each project to keep the subscription clean.
+Hands-on Microsoft Azure projects completed by Chijioke Mekowulu, an IT professional based in Calgary, Alberta, with 10+ years of experience across system analysis, IT support, and infrastructure. Projects 1–8 come from the Microsoft Learn "Introduction to Cloud Infrastructure" guided-project series and were completed alongside AZ-900 (Azure Fundamentals) study; Project 9 comes from the AZ-104 study path. Every project folder contains a write-up of what was built, how it was validated, and step-by-step screenshots of the work. All lab resources were deleted after each project to keep the subscription clean.
 
 ## Certification status
 
@@ -18,7 +18,8 @@ Hands-on Microsoft Azure projects completed by Chijioke Mekowulu, an IT professi
 | 6 | Cost Guardrails with Budgets and Azure Policy | Cost Management budgets and alerts, Azure Policy | [06-cost-guardrails](06-cost-guardrails/) |
 | 7 | Monitoring with Service Health and Activity Log Alerts | Azure Monitor, action groups, alert rules | [07-monitoring-alerts](07-monitoring-alerts/) |
 | 8 | Manage Azure Resources with the Azure CLI and Cloud Shell | Azure CLI, Cloud Shell, JMESPath queries | [08-azure-cli-cloud-shell](08-azure-cli-cloud-shell/) |
+| 9 | Deploy Azure Infrastructure with JSON ARM Templates | JSON ARM templates, Azure PowerShell deployments | [09-arm-templates](09-arm-templates/) |
 
 ## Skills summary
 
-Azure resource groups, Virtual Networks, Blob Storage (static website hosting, SAS tokens, stored access policies, lifecycle management), Azure Functions (Flex Consumption, HTTP triggers), Microsoft Entra ID, RBAC, Azure resource locks and tags, Cost Management budgets and alerts, Azure Policy, Azure Monitor (action groups, Service Health alerts, Activity Log alerts), Azure CLI resource management and JMESPath queries.
+Azure resource groups, Virtual Networks, Blob Storage (static website hosting, SAS tokens, stored access policies, lifecycle management), Azure Functions (Flex Consumption, HTTP triggers), Microsoft Entra ID, RBAC, Azure resource locks and tags, Cost Management budgets and alerts, Azure Policy, Azure Monitor (action groups, Service Health alerts, Activity Log alerts), Azure CLI resource management and JMESPath queries, JSON ARM templates and Azure PowerShell deployments (New-AzResourceGroupDeployment).
