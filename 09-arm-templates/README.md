@@ -90,3 +90,112 @@ The file is saved here as `azuredeploy-exercise1.json`.
 
 ![Storage account overview](images/07-portal-storage-account-overview.png)
 *starmtempcpm20 — East US, Standard performance, LRS, StorageV2, Provisioning state Succeeded.*
+
+## Exercise 2 — Add parameters and outputs
+
+Parameterized the template with `storageName` (string, 3–24 chars) and `storageSKU` (string, default `Standard_LRS`, eight allowed values), and added a `storageEndpoint` output returning the account's primary endpoints.
+
+### What changed
+
+- Parameters: **storageName** + **storageSKU** (allowedValues: Standard_LRS, Standard_GRS, Standard_RAGRS, Standard_ZRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS)
+- Resources use `[parameters('storageName')]` for name/displayName and `[parameters('storageSKU')]` for the sku
+- Outputs: **storageEndpoint** (object, `[reference(parameters('storageName')).primaryEndpoints]`)
+
+### Deployments
+
+- **addnameparameter-11-12-2026** — Succeeded (~2s), storageName starmtempcpm20 (reused)
+- **addSkuParameter-11-12-2026** — Succeeded (~2s), storageSKU Standard_GRS (triggered the async LRS-to-GRS SKU conversion)
+- **Basic attempt** — FAILED validation (InvalidTemplate, 'Basic' is not part of the allowed values), as designed — proves the allowed-values gate
+- **addOutputs-11-12-2026** — first attempts failed (SkuConversionInProgress, then SkuUpdateNotAvailable); completed with a fresh account **starmtempcpm21** + Standard_LRS, Succeeded (20s), endpoints returned
+
+### Troubleshooting
+
+- The addSkuParameter deploy returned Succeeded in ~2s while the SKU conversion it triggered runs async in the background — that is why the later deploy hit SkuConversionInProgress. Microsoft documents geo SKU conversions as typically taking a few days, up to a few weeks, with no SLA and no way to expedite.
+- The outputs step was completed against a fresh storage account (starmtempcpm21) instead of waiting out the conversion.
+
+### The final template (Exercise 2 version)
+
+The file is saved here as `azuredeploy-exercise2.json`.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageName": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 24,
+      "metadata": {
+        "description": "The name of the Azure storage resource"
+      }
+    },
+    "storageSKU": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Standard_ZRS",
+        "Premium_LRS",
+        "Premium_ZRS",
+        "Standard_GZRS",
+        "Standard_RAGZRS"
+      ]
+    }
+  },
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('storageName')]",
+      "tags": {
+        "displayName": "[parameters('storageName')]"
+      },
+      "location": "[resourceGroup().location]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
+      }
+    }
+  ],
+  "outputs": {
+    "storageEndpoint": {
+      "type": "object",
+      "value": "[reference(parameters('storageName')).primaryEndpoints]"
+    }
+  }
+}
+```
+
+### Screenshots — Exercise 2
+
+![storageName parameter in VS Code](images/01-vscode-jsonfile-showing-namendisplayname.png)
+*storageName parameter, with name and displayName using `[parameters('storageName')]`.*
+
+![addnameparameter deploy output](images/02-addnameparameter-terminal-deploy-output.png)
+*addnameparameter-11-12-2026 — Succeeded, storageName starmtempcpm20.*
+
+![Both parameters in VS Code](images/03-vscode-storagename-storagesku.png)
+*storageName + storageSKU (eight allowed values), sku using `[parameters('storageSKU')]`.*
+
+![addSkuParameter deploy output](images/04-addskuparameter-standardgrs.png)
+*addSkuParameter-11-12-2026 — Succeeded, storageSKU Standard_GRS.*
+
+![Basic validation error](images/05-basic-validation-error.png)
+*storageSKU Basic rejected — InvalidTemplate, value not in the allowed list.*
+
+![Outputs section in VS Code](images/06-vscode-outputs-endpoint.png)
+*storageEndpoint output, value `[reference(parameters('storageName')).primaryEndpoints]`.*
+
+![addOutputs deploy output](images/07-addoutputs-terminal.png)
+*addOutputs — endpoints returned as JSON for starmtempcpm21.*
+
+![Portal Outputs blade](images/08-addoutputs-portal-output-blade.png)
+*addOutputs-11-12-2026 Outputs blade — storageEndpoint value.*
+
+![Deployments list](images/09-portal-deploymets-list.png)
+*Five deployments, all Succeeded: blanktemplate, addstorage, addnameparameter, addSkuParameter, addOutputs.*
