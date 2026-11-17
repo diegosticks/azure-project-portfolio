@@ -103,3 +103,27 @@ Group-based licensing in the same tenant: a new user, a security group, and an E
 
 ![License details — 1/100 assigned](images/07-license-details.png)
 *License details — 1/100 assigned, Marketing group listed as the assignee.*
+
+### Exercise 5 — Restore or remove deleted users (AZ-104 extension, Nov 17, 2026)
+
+Deleted user Chris Green and restored him through the 30-day soft-delete window — then verified him back in the tenant with his original user principal name.
+
+- Deleted **Chris Green** from the All users list ("Delete the selected users?" confirmed)
+- Found him in the **Deleted users** list: deleted 17 Nov 2026, 14:26; permanent deletion scheduled 17 Dec 2026, 14:26
+- Restored him ("Restore user(s)?" confirmed) and verified him back in **All users** with his original UPN — tenant back to 3 users
+- Finding: **Alex Guided Project** from the original Project 4 work is still in the Deleted users list too — deleted 19 Oct 2026, permanent deletion due 18 Nov 2026. The page banner confirms users are permanently deleted automatically 30 days after deletion.
+
+![All users list, Chris Green selected](images/01-all-user-before-delete.png)
+*All users list — Chris Green's checkbox selected (1 user selected).*
+
+![Delete the selected users dialog](images/02-delete-user-confirmation-dialogue.png)
+*"Delete the selected users?" confirmation dialog.*
+
+![Deleted users list](images/03-deleted-users-list.png)
+*Deleted users list — Chris Green deleted 17 Nov 2026, 14:26, permanent deletion 17 Dec 2026; Alex Guided Project deleted 19 Oct 2026, permanent deletion 18 Nov 2026.*
+
+![Restore user dialog](images/04-restore-user-dialogue.png)
+*"Restore user(s)?" dialog, Chris Green selected.*
+
+![All users list after restore](images/05-all-users-list-after-restore.png)
+*All users list after restore — Chris Green back with his original UPN.*
