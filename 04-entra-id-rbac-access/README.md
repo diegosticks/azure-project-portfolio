@@ -73,3 +73,33 @@ Set up least-privilege access for a new employee the way an IT team actually doe
 
 ![Signed in as Alex — creation denied](images/05.2-storage-account-creation-failure.png)
 *Signed in as Alex — storage account creation denied (AuthorizationFailed).*
+
+### Exercise 4 — Assign licenses to users (AZ-104 extension, Nov 17, 2026)
+
+Group-based licensing in the same tenant: a new user, a security group, and an Entra ID P2 license assigned to the group through the Microsoft 365 admin center.
+
+- User **Chris Green** (ChrisG@cmekowuluhotmail.onmicrosoft.com) created in the Microsoft Entra admin center
+- Security group **Marketing** (Security type, Assigned membership, owner the administrator account, member Chris Green; Object Id fa909d91-d55b-4258-ab55-93d8a62c8a77)
+- License **Microsoft Entra ID P2** — 100 available in the tenant, 0 assigned before the exercise, 1/100 assigned after
+- The restore/recently-deleted-user part of the exercise page is reading only (30-day restore window; restore needs Global administrator, Partner Tier-1/2 Support or User administrator) — no deletion or restore performed
+
+![All users list showing Chris Green](images/01-all-users-list.png)
+*All users list — Chris Green created (3 users in the tenant).*
+
+![New Group form for Marketing](images/02-new-group-creation-page.png)
+*New Group form: Security, Marketing, Assigned, 1 owner and 1 member selected.*
+
+![All groups list showing Marketing](images/03-all-group-list.png)
+*All groups list — Marketing, Security, Assigned.*
+
+![M365 admin center Licenses](images/04-licenses-list.png)
+*Microsoft 365 admin center Licenses — Microsoft Entra ID P2, 100 available, 0/100 assigned.*
+
+![Assign licenses dialog](images/05-assign-license-dialog-marketing.png)
+*Assign licenses dialog — Marketing selected, 100 of 100 available.*
+
+![Licenses being assigned](images/06-success-message.png)
+*"Your licenses are being assigned" — success message.*
+
+![License details — 1/100 assigned](images/07-license-details.png)
+*License details — 1/100 assigned, Marketing group listed as the assignee.*
