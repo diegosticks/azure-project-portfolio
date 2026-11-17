@@ -127,3 +127,18 @@ Deleted user Chris Green and restored him through the 30-day soft-delete window 
 
 ![All users list after restore](images/05-all-users-list-after-restore.png)
 *All users list after restore — Chris Green back with his original UPN.*
+
+### Exercise 6 — Add groups in Microsoft Entra ID (AZ-104 extension, Nov 17, 2026)
+
+Created a **Microsoft 365 group** named **Northwest Sales** — the other group type, alongside the Marketing security group from Exercise 4.
+
+- Group type **Microsoft 365**, name **Northwest Sales**, group email address NorthwestSales@cmekowuluhotmail.onmicrosoft.com, description "Group containing members of the sales team in Northwest region"
+- Membership type **Assigned**, 1 owner (the administrator account) and 1 member selected
+- Verified in the **All groups** list: 2 groups — Marketing (Security, Assigned, Object Id fa909d91-d55b-4258-ab55-93d8a62c8a77) and Northwest Sales (Microsoft 365, Assigned, Object Id 8e5327d9-4bf4-40e9-aa6e-527080a4f0d2)
+- Contrast with the security group: a Microsoft 365 group also gets a mailbox address and the collaboration backing behind it.
+
+![New Group page filled in](images/01-new-group-page-filled.png)
+*New Group page — Microsoft 365, Northwest Sales, Assigned, 1 owner and 1 member selected.*
+
+![All groups list](images/02-all-groups-list-showing-northwest-sales.png)
+*All groups list — Marketing (Security) and Northwest Sales (Microsoft 365) side by side.*
