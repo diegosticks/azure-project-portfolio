@@ -142,3 +142,24 @@ Created a **Microsoft 365 group** named **Northwest Sales** — the other group 
 
 ![All groups list](images/02-all-groups-list-showing-northwest-sales.png)
 *All groups list — Marketing (Security) and Northwest Sales (Microsoft 365) side by side.*
+
+### Exercise 7 — Change group license assignments (AZ-104 extension, Nov 18, 2026)
+
+Changed the license assignment of the **Microsoft 365 group Northwest Sales**.
+
+- Before: its **Licenses** page in the Entra admin center showed "No license assignments found" — with the banner noting that adding, removing, and reprocessing licensing assignments is only available within the M365 Admin Center
+- Assigned **Microsoft Entra ID P2** in the Microsoft 365 admin center — the Assign licenses pane with Northwest Sales picked, subscription "Nov 17, 2026 (99 of 100 available licenses)" selected, at 1/100 assigned (Marketing holding the one)
+- After: Northwest Sales' Licenses page in Entra shows Microsoft Entra ID P2, State **Queued**, 4/4 enabled services — group-based licensing processes assignments in the background
+- Confirmed complete: the Microsoft 365 admin center license details now read **2/100 assigned**, listing the subscription (2 assigned) plus both groups, Marketing and Northwest Sales
+
+![Northwest Sales Licenses page before](images/01-northwest-sales-licensepage-entra.png)
+*Northwest Sales Licenses page before — no license assignments found.*
+
+![Assign licenses pane](images/02-microsoft365-admincenter-assignlicensepage.png)
+*Microsoft 365 admin center — Assign licenses pane, Northwest Sales picked, P2 at 1/100 assigned.*
+
+![Northwest Sales Licenses page after](images/03-northwestsales-licencepageentra.png)
+*Northwest Sales Licenses page after — Entra ID P2, Queued, 4/4 services.*
+
+![License details after](images/04-microsoftadmincenter-licensedetails.png)
+*Microsoft 365 admin center license details — 2/100 assigned, Marketing and Northwest Sales listed.*
