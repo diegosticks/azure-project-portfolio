@@ -163,3 +163,24 @@ Changed the license assignment of the **Microsoft 365 group Northwest Sales**.
 
 ![License details after](images/04-microsoftadmincenter-licensedetails.png)
 *Microsoft 365 admin center license details — 2/100 assigned, Marketing and Northwest Sales listed.*
+
+### Exercise 8 — Change user license assignments (AZ-104 extension, Nov 18, 2026)
+
+Created a new user **Dominique Koch** (DominiqueK@cmekowuluhotmail.onmicrosoft.com) and assigned Microsoft Entra ID P2 to her **directly** — the counterpart to the group-based licensing in Exercises 4 and 7.
+
+- Tenant now has 4 users: Chijioke Mekowulu, Chris Green, Diego Pascal, Dominique Koch
+- Assigned **Microsoft Entra ID P2** in the Microsoft 365 admin center — the Assign licenses pane with Dominique Koch picked, subscription "Nov 17, 2026 (98 of 100 available licenses)" selected, at 2/100 assigned
+- Verified on Dominique Koch's **Licenses** page in Entra: Microsoft Entra ID P2, State **Active**, 4/4 enabled services, Assignment Paths **Direct**
+- Confirmed: the Microsoft 365 admin center license details now read **3/100 assigned**, listing the subscription (3 assigned) plus Marketing (Group), Northwest Sales (Group), and Dominique Koch (User)
+
+![All users list](images/01-alluserslist.png)
+*All users list — 4 users including Dominique Koch.*
+
+![Assign licenses pane](images/02-microsoft365admin-assignlicense.png)
+*Microsoft 365 admin center — Assign licenses pane, Dominique Koch picked, 2/100 assigned.*
+
+![Dominique Koch Licenses page](images/03-dominiquesprofile-licensedetails.png)
+*Dominique Koch's Licenses page in Entra — Entra ID P2, Active, 4/4 services, Assignment Paths Direct.*
+
+![License details after](images/04-microsoft365admin-licensedetails.png)
+*Microsoft 365 admin center license details — 3/100 assigned, Marketing, Northwest Sales, Dominique Koch.*
