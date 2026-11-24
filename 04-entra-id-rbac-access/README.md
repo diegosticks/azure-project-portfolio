@@ -244,3 +244,30 @@ Granted least-privilege access in the portal — the write side of the access mo
 
 ![Role assignments tab after removal](images/p4-ex10-08-after-removal.png)
 *Role assignments tab after removal — back to 1 inherited Owner.*
+
+### Exercise 11 — View activity logs for Azure RBAC changes (AZ-104 extension, Nov 24, 2026)
+
+Audited Azure RBAC role-assignment operations in the subscription Activity Log for **Azure subscription 1**, filtered to the four operations: Create role assignment, Delete role assignment, Create or update custom role definition, and Delete custom role definition.
+
+- Timespan used: custom range starting **Thu Oct 01 2026 08:19:48 GMT-0600 (Mountain Daylight Time)** through Nov 24, 2026. Note honestly: the exercise asked for the previous calendar month (October 2026), but the range actually ran Oct 1 – Nov 24, so the export covers both October and the Nov 24 Exercise 10 work. The export file is named accordingly: `Azure-subscription-1_ActivityLog_Oct01-Nov24-2026_RBAC-4-ops_not-PIM-audit.csv`.
+- The filtered list (**Operation: 4 selected**) shows **4 items, all Succeeded**: Delete role assignment (Tue Nov 24), Create role assignment (Tue Nov 24), Delete role assignment (Mon Oct 19), Create role assignment (Mon Oct 19). (The operation-filter pane itself could not be captured as a screenshot; the "Operation: 4 selected" chip in the results is the evidence the filter was applied.)
+- The CSV export has **7 rows** — the 4 Succeeded completion records plus 3 Started records — reconciled by correlation ID into exactly **4 distinct operations**:
+  - Oct 19 22:55 UTC — Create role assignment, Succeeded, rg-gp-access-model (the Project 4 Reader assignment to gp-rg-readers)
+  - Oct 20 00:28 UTC — Delete role assignment, Succeeded, rg-gp-access-model (the Reader assignment removed in the Oct 19–20 cleanup)
+  - Nov 24 13:53 UTC — Create role assignment, Succeeded, rg-role-lab-10 (the Exercise 10 Virtual Machine Contributor grant to Dominique Koch)
+  - Nov 24 14:01 UTC — Delete role assignment, Succeeded, rg-role-lab-10 (the Exercise 10 assignment removal)
+- No custom role definition operations appeared — none were ever created.
+- The opened event is the Nov 24 delete: Tue Nov 24 2026 08:01:19 GMT-0600, initiated by c.mekowulu@hotmail.com, message "Shared with 'Dominique Koch'.", Role Virtual Machine Contributor, Scope Resource group: 'rg-role-lab-10'.
+- Coverage note: Activity Log records for those four RBAC operations only, **not a complete PIM audit** — PIM eligibility and activation activity is not covered by these four operations.
+
+![Azure subscription 1 Activity log](images/p4-ex11-01-activity-log.png)
+*Azure subscription 1 Activity log — Last 6 hours, 3 items.*
+
+![Timespan starting Oct 1, 2026](images/p4-ex11-02-timespan.png)
+*Timespan starting Thu Oct 01 2026 — First 92 items, unfiltered.*
+
+![Filtered results, Operation: 4 selected](images/p4-ex11-04-filtered-result.png)
+*Filtered results — Operation: 4 selected, 4 items all Succeeded.*
+
+![Delete role assignment event opened](images/p4-ex11-05-event-opened.png)
+*Delete role assignment event opened — Nov 24, Dominique Koch, Virtual Machine Contributor, rg-role-lab-10.*
