@@ -331,3 +331,19 @@ The end-to-end SSPR test, following on from the Exercise 12 configuration: a lim
 
 ![Get back into your account](images/p4-ex13-07-passwrd-reset.png)
 *Get back into your account — verification step 1 done, choose a new password, Finish.*
+
+### Exercise 14 — Customize directory branding (AZ-104 extension, Nov 24, 2026)
+
+Configured custom company branding for the tenant so users see the organization's branding on the sign-in page. The form used is the newer **Customize default sign-in experience** wizard (Basics / Layout / Header / Footer / Sign-in form / Review tabs), not the older Company branding blade.
+
+- **Basics tab** — Favicon: `company-logo-32x32.png` (32x32 PNG "CM" monogram, 527 bytes, limit 5 KB); Background image: `sign-in-background-1920x1080.jpg` (1920x1080 JPG navy gradient with a subtle "CM" watermark, 24 KB, limit 300 KB); Page background color left at the default ("Not provided")
+- Both brand images were created for this exercise (a navy "CM" monogram identity) and are kept with the exercise files, along with a 245x48 banner logo (`banner-logo-245x48.png`) made for the Header tab
+- **Verified live** — the customized sign-in page for test user Bala Sandhu (balas@cmekowuluhotmail.onmicrosoft.com) shows the navy CM background behind the sign-in box, with the "Forgot my password" link visible
+- Honest findings, stated plainly: the sign-in box itself still shows the **Microsoft logo** in the captured shot — the custom banner logo is not visible on the sign-in box; and the third screenshot the exercise asks for, the organization logo on the password reset page, could not be captured — the banner logo does not render on the password-reset pages in this tenant even after the User ID is entered and the flow is advanced, tried twice. No screenshot was fabricated for it; the exercise is recorded with the two real screenshots and this finding.
+- No passwords or verification codes appear in any screenshot.
+
+![Customize default sign-in experience form](images/p4-ex14-01-company-branding-form.png)
+*Customize default sign-in experience, Basics tab — Favicon company-logo-32x32.png, Background image sign-in-background-1920x1080.jpg, page background color default.*
+
+![Customized sign-in page for Bala Sandhu](images/p4-ex14-02-customized-signin-page.png)
+*Customized sign-in page for Bala Sandhu — navy CM background live, Enter password, Forgot my password link.*
