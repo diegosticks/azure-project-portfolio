@@ -184,3 +184,27 @@ Created a new user **Dominique Koch** (DominiqueK@cmekowuluhotmail.onmicrosoft.c
 
 ![License details after](images/04-microsoft365admin-licensedetails.png)
 *Microsoft 365 admin center license details — 3/100 assigned, Marketing, Northwest Sales, Dominique Koch.*
+
+### Exercise 9 — List access using Azure RBAC and the Azure portal (AZ-104 extension, Nov 24, 2026)
+
+Listed RBAC access in the portal — the read side of the access model built in the earlier exercises. Own access first, then the resource group's assignments, then the roles themselves.
+
+- Opened the Profile menu and selected **My permissions**: the account c.mekowulu@hotmail.com has been assigned the role **Owner** (type BuiltInRole) with access to **Azure subscription 1**
+- Inspected a fresh non-production resource group, **rg-role-lab-10** (East US), created for this exercise
+- Its **Access control (IAM) → Role assignments** tab shows exactly **1 assignment** for the subscription (1 of 5000 used), **1 privileged**: Chijioke Mekowulu (User) — **Owner**, Scope **Subscription (Inherited)**, State Active Permanent, End time Permanent, Condition None — the inherited-from-parent-scope case, with no assignments scoped directly to the resource group itself
+- The **Roles** tab lists the built-in roles (**1,011 results**): Owner grants full access to manage all resources, including the ability to assign roles; Contributor grants full access to manage all resources but does not allow assigning roles; Reader allows viewing all resources but not making changes
+
+![Profile menu with My permissions](images/p4-ex9-01-profile-menu.png)
+*Profile menu with My permissions highlighted.*
+
+![My permissions pane](images/p4-ex9-02-my-permissions.png)
+*My permissions pane — Owner (BuiltInRole) at Azure subscription 1.*
+
+![Search menu with Resource groups](images/p4-ex9-03-search-resource-groups.png)
+*Search menu with Resource groups; the list shows rg-role-lab-10 (East US).*
+
+![Role assignments tab](images/p4-ex9-04-role-assignments.png)
+*rg-role-lab-10 Access control (IAM) — Role assignments tab: 1 assignment, Owner inherited from the subscription.*
+
+![Roles tab](images/p4-ex9-05-roles-tab.png)
+*Roles tab — built-in roles list, 1–100 of 1,011 results, Owner, Contributor, and Reader at the top.*
