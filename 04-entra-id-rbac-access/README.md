@@ -271,3 +271,29 @@ Audited Azure RBAC role-assignment operations in the subscription Activity Log f
 
 ![Delete role assignment event opened](images/p4-ex11-05-event-opened.png)
 *Delete role assignment event opened — Nov 24, Dominique Koch, Virtual Machine Contributor, rg-role-lab-10.*
+
+### Exercise 12 — Implement Microsoft Entra self-service password reset (AZ-104 extension, Nov 24, 2026)
+
+Implemented self-service password reset (SSPR) in Microsoft Entra ID as a trial rollout for the **Marketing** security group — the group from Exercise 4, whose member is the non-administrative test user Chris Green. (The exercise scenario describes 20 marketing users; the actual group has 1 member, so the trial runs as-is.) Prerequisites met: Microsoft Entra ID P2 is licensed in the tenant, and the test user is non-administrative and licensed.
+
+- **Properties** — Self service password reset enabled: **Selected**, Select group: **Marketing**
+- **Authentication methods** — Number of methods required to reset: **1**. The blade lists only **Security questions** as a method available to users, with the note "Use the auth methods policy to manage other authentication methods" — Email, Microsoft Authenticator, SMS, and voice call are governed by the tenant's Authentication methods policy (Protection → Authentication methods), not this blade. The blade also carries the banner that Security Questions are **retiring in March 2027** and won't be available for password reset after that date.
+- **Registration** — Require users to register when signing in: **Yes**; Number of days before users are asked to re-confirm their authentication information: **180**
+- **Notifications** — Notify users on password resets: **Yes**; Notify all admins when other admins reset their password: **Yes**
+- **Customization** — Customize helpdesk link: **Yes**; Custom helpdesk email or URL: **mekowuluchijioke@gmail.com**
+- Scope note: these settings apply to end users; admins are always enabled for SSPR and are required to use two authentication methods to reset their password. After enabling, the test user is prompted to register authentication methods at next sign-in.
+
+![Password reset Properties](images/p4-ex12-01-properties.png)
+*Password reset Properties — SSPR enabled: Selected, group Marketing.*
+
+![Password reset Authentication methods](images/p4-ex12-02-authentication-methods.png)
+*Authentication methods — 1 method required; only Security questions listed in the blade, other methods managed by the auth methods policy; March 2027 retirement banner.*
+
+![Password reset Registration](images/p4-ex12-03-registration.png)
+*Registration — require users to register when signing in: Yes, re-confirm every 180 days.*
+
+![Password reset Notifications](images/p4-ex12-04-notifications.png)
+*Notifications — notify users on password resets: Yes; notify all admins: Yes.*
+
+![Password reset Customization](images/p4-ex12-05-customization.png)
+*Customization — helpdesk link Yes, mekowuluchijioke@gmail.com.*
