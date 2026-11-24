@@ -208,3 +208,39 @@ Listed RBAC access in the portal — the read side of the access model built in 
 
 ![Roles tab](images/p4-ex9-05-roles-tab.png)
 *Roles tab — built-in roles list, 1–100 of 1,011 results, Owner, Contributor, and Reader at the top.*
+
+### Exercise 10 — Grant access using Azure RBAC and the Azure portal (AZ-104 extension, Nov 24, 2026)
+
+Granted least-privilege access in the portal — the write side of the access model listed in Exercise 9. Assigned the **Virtual Machine Contributor** role to the test user **Dominique Koch** (DominiqueK@cmekowuluhotmail.onmicrosoft.com, standing in for the exercise's example identity Alain) at the resource-group scope of **rg-role-lab-10** (East US).
+
+- Before: the resource group's **Access control (IAM) → Role assignments** tab showed exactly **1 assignment** — the inherited Owner at subscription scope
+- **Add role assignment → Role tab** (Job function roles): searched "virtual machine" and selected **Virtual Machine Contributor** — "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they're connected to."
+- **Members tab**: Dominique Koch selected from the tenant's users
+- **Review + assign** verified Role Virtual Machine Contributor, Scope /subscriptions/915a80ce-a388-4fbf-a7dc-1ab1716b8d7a/resourceGroups/rg-role-lab-10, Member Dominique Koch, Assignment type **Active**, Assignment duration **Permanent**
+- After: the Role assignments tab showed **2 assignments** — the inherited Owner plus Dominique Koch, Virtual Machine Contributor, Scope **This resource**, State Active Permanent
+- **Check access** confirmed Dominique Koch's assignment at this scope: Virtual Machine Contributor, This resource, no group assignment, no condition, **0 deny assignments**
+- Cleanup, as the exercise requires: the assignment was removed afterward and the final Role assignments tab is back to **1 assignment** — only the inherited Owner, untouched, and the resource group was not deleted
+
+![Search menu with Resource groups](images/p4-ex10-01-search-menu.png)
+*Search menu with Resource groups; rg-role-lab-10 in recent resources.*
+
+![Role assignments tab before](images/p4-ex10-02-before.png)
+*rg-role-lab-10 Access control (IAM) — Role assignments tab before: 1 inherited Owner.*
+
+![Add role assignment, Virtual Machine Contributor selected](images/p4-ex10-03-select-role.png)
+*Add role assignment — Role tab, Virtual Machine Contributor selected.*
+
+![Select members pane, Dominique Koch selected](images/p4-ex10-04-members.png)
+*Members tab — Select members pane, Dominique Koch selected.*
+
+![Review + assign](images/p4-ex10-05-review-assign.png)
+*Review + assign — Virtual Machine Contributor, rg-role-lab-10 scope, Dominique Koch, Active, Permanent.*
+
+![Role assignments tab after](images/p4-ex10-06-after.png)
+*Role assignments tab after — 2 assignments, Dominique Koch Virtual Machine Contributor at This resource.*
+
+![Check access](images/p4-ex10-07-check-access.png)
+*Check access — Dominique Koch assignments: Virtual Machine Contributor, This resource.*
+
+![Role assignments tab after removal](images/p4-ex10-08-after-removal.png)
+*Role assignments tab after removal — back to 1 inherited Owner.*
