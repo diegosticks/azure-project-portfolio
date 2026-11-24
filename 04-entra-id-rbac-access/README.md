@@ -297,3 +297,37 @@ Implemented self-service password reset (SSPR) in Microsoft Entra ID as a trial 
 
 ![Password reset Customization](images/p4-ex12-05-customization.png)
 *Customization — helpdesk link Yes, mekowuluchijioke@gmail.com.*
+
+### Exercise 13 — Set up self-service password reset (AZ-104 extension, Nov 24, 2026)
+
+The end-to-end SSPR test, following on from the Exercise 12 configuration: a limited-rollout group, a new test user, and the full register-and-reset flow done as that user.
+
+- Created security group **SSPRTesters** (Security type, Assigned membership, description "Members are testing the rollout of SSPR")
+- Created non-administrative test user **Bala Sandhu** (balas@cmekowuluhotmail.onmicrosoft.com), assigned to the SSPRTesters group and licensed with Entra ID P2 so SSPR applies to him — the tenant now has 5 users (Bala Sandhu, Chijioke Mekowulu, Chris Green, Diego Pascal, Dominique Koch)
+- **Password reset Properties** — Self service password reset enabled: **Selected**, Select group: **SSPRTesters** (scope switched from the Marketing group in Exercise 12)
+- **Authentication methods** are governed by the tenant's Authentication methods policy, not the SSPR blade — the blade collapses to Security questions only once the policy loads, so the evidence is the Authentication methods **Policies** list: **Email OTP enabled Yes for All users** (also Yes: Passkey FIDO2, Microsoft Authenticator, Temporary Access Pass, Software OATH tokens, Password; No: SMS, Voice call, Hardware OATH tokens, Certificate-based authentication, Verified ID, QR code). Email enabled for All users covers Bala.
+- **Customization** — Customize helpdesk link: **Yes**; Custom helpdesk email or URL: **admin@cmekowuluhotmail.onmicrosoft.com**; the "Password reset policy saved — Changes to password reset policy were saved successfully" toast confirms the save. Note honestly: this is display text on the reset page, not a monitored mailbox.
+- **Registration**, as Bala at aka.ms/ssprsetup (Security info page): **Email** registered to mekowuluchijioke@gmail.com. The page also shows Password last updated 3 minutes ago and Microsoft Authenticator push MFA on iPhone 16 Pro Max. (The exercise's screenshot caption asked for a "mobile phone registration form" but the step registers Email — the captured screen is the Security info page showing the registered Email method.)
+- **Test**, as Bala at aka.ms/sspr ("Get back into your account"): verification step 1 completed by email code, reaching **choose a new password** with Enter new password / Confirm new password and Finish — the end-to-end reset works by email.
+- No passwords or verification codes appear in any screenshot.
+
+![New Group form for SSPRTesters](images/p4-ex13-01-newgroupform.png)
+*New Group form — Security, SSPRTesters, "Members are testing the rollout of SSPR", Assigned, Create.*
+
+![All users list showing Bala Sandhu](images/p4-ex13-02-all-users-list.png)
+*All users list — 5 users found, including Bala Sandhu.*
+
+![Password reset Properties](images/p4-ex13-03-passwordreset-properties.png)
+*Password reset Properties — SSPR enabled: Selected, group SSPRTesters.*
+
+![Authentication methods Policies list](images/p4-ex13-04-authentication-methods-page.png)
+*Authentication methods Policies — Email OTP Yes, All users.*
+
+![Password reset Customization](images/p4-ex13-05-customization.png)
+*Customization — helpdesk link Yes, admin@cmekowuluhotmail.onmicrosoft.com, "Password reset policy saved" toast.*
+
+![Security info signed in as Bala Sandhu](images/p4-ex13-06-signedin-bala.png)
+*Security info as Bala Sandhu — Email mekowuluchijioke@gmail.com registered; Microsoft Authenticator and Password also listed.*
+
+![Get back into your account](images/p4-ex13-07-passwrd-reset.png)
+*Get back into your account — verification step 1 done, choose a new password, Finish.*
